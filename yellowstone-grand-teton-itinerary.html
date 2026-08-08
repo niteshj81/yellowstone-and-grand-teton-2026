@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yellowstone &amp; Grand Teton — Sept 6-14, 2026</title>
+<style>
+  :root{
+    --cream:#EFE6D3;
+    --paper:#F7F1E4;
+    --forest:#2E4632;
+    --forest-dark:#1E2F22;
+    --bark:#4A392B;
+    --ochre:#B98226;
+    --rust:#A8461F;
+    --ink:#2B241B;
+    --line:#CDBE9C;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Public Sans', 'Segoe UI', Arial, sans-serif;
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(74,57,43,0.05) 40px),
+      repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(74,57,43,0.035) 40px);
+  }
+  @font-face{
+    font-family:'DisplaySerif';
+    src:local('Georgia');
+  }
+  .display{
+    font-family:Georgia, 'Times New Roman', serif;
+    letter-spacing:0.01em;
+  }
+
+  /* ===== Hero ===== */
+  header.hero{
+    background:
+      linear-gradient(180deg, rgba(30,47,34,0.88), rgba(30,47,34,0.94)),
+      repeating-linear-gradient(120deg, rgba(255,255,255,0.03) 0 2px, transparent 2px 26px);
+    color:var(--paper);
+    padding:56px 24px 40px;
+    position:relative;
+    overflow:hidden;
+    border-bottom:6px solid var(--ochre);
+  }
+  header.hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Cpath d='M0 160 Q 60 100 120 150 T 240 130 T 400 150' stroke='%23ffffff' stroke-opacity='0.05' fill='none' stroke-width='2'/%3E%3Cpath d='M0 180 Q 70 120 140 170 T 260 150 T 400 175' stroke='%23ffffff' stroke-opacity='0.04' fill='none' stroke-width='2'/%3E%3C/svg%3E");
+    background-size:400px 200px;
+    opacity:0.6;
+  }
+  .hero-inner{max-width:980px;margin:0 auto;position:relative;}
+  .eyebrow{
+    text-transform:uppercase;
+    letter-spacing:0.22em;
+    font-size:12px;
+    color:var(--ochre);
+    font-weight:700;
+    margin-bottom:14px;
+  }
+  h1.display{
+    font-size:44px;
+    margin:0 0 8px;
+    line-height:1.05;
+  }
+  .hero-sub{font-size:17px;color:#DCE4D8;max-width:640px;line-height:1.5;margin-bottom:26px;}
+  .route-line{
+    display:flex;
+    align-items:center;
+    gap:0;
+    margin-top:20px;
+    flex-wrap:wrap;
+  }
+  .route-node{
+    display:flex; flex-direction:column; align-items:center;
+    font-size:12.5px; color:var(--paper); text-align:center; width:78px;
+  }
+  .route-node .dot{
+    width:11px;height:11px;border-radius:50%;background:var(--ochre);
+    border:2px solid var(--forest-dark); margin-bottom:6px;
+  }
+  .route-seg{flex:1;min-width:18px;height:2px;background:rgba(239,230,211,0.3);margin:0 -2px 26px;}
+
+  /* ===== Trip facts bar ===== */
+  .facts{
+    max-width:980px;margin:-28px auto 0; position:relative;
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:4px;
+    box-shadow:0 10px 24px rgba(30,20,10,0.15);
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  }
+  .fact{padding:18px 20px;border-right:1px solid var(--line);}
+  .fact:last-child{border-right:none;}
+  .fact .k{font-size:11px;text-transform:uppercase;letter-spacing:0.14em;color:var(--bark);opacity:0.7;margin-bottom:4px;}
+  .fact .v{font-size:15px;font-weight:700;color:var(--forest-dark);}
+
+  main{max-width:980px;margin:0 auto;padding:48px 24px 80px;}
+
+  section.block{margin-bottom:52px;}
+  h2.section-title{
+    font-family:Georgia, serif;
+    font-size:15px;
+    text-transform:uppercase;
+    letter-spacing:0.16em;
+    color:var(--rust);
+    border-bottom:2px solid var(--line);
+    padding-bottom:10px;
+    margin-bottom:22px;
+    display:flex; align-items:center; gap:10px;
+  }
+  h2.section-title::before{content:"";width:22px;height:2px;background:var(--rust);display:inline-block;}
+
+  /* ===== Logistics table ===== */
+  table.logistics{width:100%;border-collapse:collapse;background:var(--paper);border:1px solid var(--line);}
+  table.logistics th, table.logistics td{
+    text-align:left;padding:11px 14px;font-size:14px;border-bottom:1px solid var(--line);
+  }
+  table.logistics th{
+    background:var(--forest);color:var(--paper);font-weight:600;
+    text-transform:uppercase;font-size:11px;letter-spacing:0.08em;
+  }
+  table.logistics tr:last-child td{border-bottom:none;}
+  table.logistics td.dates{font-weight:700;color:var(--forest-dark);white-space:nowrap;}
+  table.logistics a{color:var(--rust);text-decoration:none;border-bottom:1px dotted var(--rust);}
+  table.logistics a:hover{color:var(--ochre);}
+
+  /* ===== Day tabs ===== */
+  .tabbar{
+    display:flex;flex-wrap:wrap;gap:6px;margin-bottom:0;
+    border-bottom:3px solid var(--forest);
+  }
+  .tabbtn{
+    font-family:Georgia,serif;
+    background:var(--line);
+    color:var(--bark);
+    border:none;
+    padding:10px 14px;
+    font-size:13px;
+    font-weight:700;
+    cursor:pointer;
+    border-radius:4px 4px 0 0;
+    opacity:0.72;
+    transition:all .15s ease;
+    line-height:1.3;
+  }
+  .tabbtn .d{display:block;font-size:10px;font-weight:400;letter-spacing:0.05em;text-transform:uppercase;}
+  .tabbtn:hover{opacity:1;}
+  .tabbtn.active{
+    background:var(--forest);color:var(--paper);opacity:1;
+  }
+
+  .daypanel{display:none;background:var(--paper);border:1px solid var(--line);border-top:none;padding:28px 26px;}
+  .daypanel.active{display:block;}
+  .daypanel .headline{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:4px;}
+  .daypanel h3.display{font-size:22px;margin:0;color:var(--forest-dark);}
+  .basecamp{font-size:12.5px;color:var(--rust);font-weight:700;text-transform:uppercase;letter-spacing:0.06em;}
+  .daypanel .lead{color:var(--bark);font-size:14px;margin:6px 0 22px;}
+
+  ol.stops{list-style:none;margin:0;padding:0;border-left:2px solid var(--line);}
+  ol.stops li{position:relative;padding:0 0 20px 22px;}
+  ol.stops li:last-child{padding-bottom:0;}
+  ol.stops li::before{
+    content:"";position:absolute;left:-6px;top:3px;width:10px;height:10px;
+    background:var(--ochre);border-radius:50%;border:2px solid var(--paper);
+    box-shadow:0 0 0 2px var(--forest);
+  }
+  .stop-time{font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:var(--rust);font-weight:700;}
+  .stop-name a{
+    font-family:Georgia,serif;font-size:16.5px;font-weight:700;color:var(--forest-dark);
+    text-decoration:none;border-bottom:1px solid transparent;
+  }
+  .stop-name a:hover{border-bottom:1px solid var(--forest-dark);}
+  .stop-blurb{font-size:13.5px;color:var(--bark);margin-top:2px;line-height:1.45;}
+
+  .meals{
+    margin-top:26px;padding-top:22px;border-top:1px dashed var(--line);
+  }
+  .meals h4{
+    font-family:Georgia,serif;font-size:13px;text-transform:uppercase;letter-spacing:0.1em;
+    color:var(--forest);margin:0 0 14px;
+  }
+  .meal-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  @media (max-width:640px){.meal-grid{grid-template-columns:1fr;}}
+  .meal-card{background:var(--cream);border:1px solid var(--line);border-radius:4px;padding:14px 16px;}
+  .meal-card .slot{font-size:10.5px;text-transform:uppercase;letter-spacing:0.1em;color:var(--rust);font-weight:700;margin-bottom:6px;}
+  .meal-card .rname a{font-family:Georgia,serif;font-weight:700;font-size:15px;color:var(--forest-dark);text-decoration:none;}
+  .meal-card .rname a:hover{text-decoration:underline;}
+  .veg-badge{
+    display:inline-block;margin-left:7px;font-size:9.5px;font-weight:700;letter-spacing:0.04em;
+    background:var(--forest);color:var(--paper);padding:2px 6px;border-radius:10px;vertical-align:middle;
+  }
+  .meal-card .note{font-size:12.5px;color:var(--bark);margin-top:5px;line-height:1.4;}
+
+  footer{max-width:980px;margin:0 auto;padding:0 24px 60px;font-size:12px;color:var(--bark);opacity:0.75;}
+  footer a{color:var(--rust);}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">Family Trip &nbsp;·&nbsp; Wyoming &amp; Montana</div>
+    <h1 class="display">Yellowstone &amp; Grand Teton</h1>
+    <p class="hero-sub">An easy-paced, 9-day loop through both parks for a family of three — light hikes, wildlife drives, geyser basins, and a vegan/vegetarian-friendly meal plan at every stop.</p>
+
+    <div class="route-line">
+      <div class="route-node"><span class="dot"></span>EWR</div>
+      <div class="route-seg"></div>
+      <div class="route-node"><span class="dot"></span>Jackson, WY</div>
+      <div class="route-seg"></div>
+      <div class="route-node"><span class="dot"></span>Grand Teton</div>
+      <div class="route-seg"></div>
+      <div class="route-node"><span class="dot"></span>Old Faithful</div>
+      <div class="route-seg"></div>
+      <div class="route-node"><span class="dot"></span>Gardiner, MT</div>
+      <div class="route-seg"></div>
+      <div class="route-node"><span class="dot"></span>Belgrade, MT</div>
+      <div class="route-seg"></div>
+      <div class="route-node"><span class="dot"></span>EWR</div>
+    </div>
+  </div>
+</header>
+
+<div class="facts">
+  <div class="fact"><div class="k">Dates</div><div class="v">Sept 6 – 14, 2026</div></div>
+  <div class="fact"><div class="k">Travelers</div><div class="v">Family of 3</div></div>
+  <div class="fact"><div class="k">Diet</div><div class="v">Vegan + Vegetarian</div></div>
+  <div class="fact"><div class="k">Pace</div><div class="v">Easy · light hikes only</div></div>
+</div>
+
+<main>
+
+  <section class="block">
+    <h2 class="section-title">Flights &amp; Lodging</h2>
+    <table class="logistics">
+      <tr><th>Dates</th><th>Item</th><th>Details</th></tr>
+      <tr>
+        <td class="dates">Sun 9/6</td>
+        <td>✈ Flight — EWR → JAC</td>
+        <td>Departs 6:27 PM · Arrives 9:20 PM · <a href="https://www.google.com/maps/search/?api=1&query=Jackson+Hole+Airport" target="_blank">Jackson Hole Airport</a></td>
+      </tr>
+      <tr>
+        <td class="dates">9/6 – 9/7</td>
+        <td>🏨 <a href="https://www.google.com/maps/search/?api=1&query=Flat+Creek+Inn+Jackson+WY" target="_blank">Flat Creek Inn</a></td>
+        <td>Jackson, WY — arrival night</td>
+      </tr>
+      <tr>
+        <td class="dates">9/7 – 9/9</td>
+        <td>🏨 <a href="https://www.gtlc.com/lodges/jackson-lake-lodge" target="_blank">Jackson Lake Lodge</a></td>
+        <td>Grand Teton NP, Moran, WY — 2 nights</td>
+      </tr>
+      <tr>
+        <td class="dates">9/9 – 9/11</td>
+        <td>🏨 <a href="https://www.yellowstonenationalparklodges.com/lodging/old-faithful-snow-lodge/" target="_blank">Old Faithful Snow Lodge</a></td>
+        <td>Yellowstone NP — 2 nights</td>
+      </tr>
+      <tr>
+        <td class="dates">9/11 – 9/13</td>
+        <td>🏨 <a href="https://www.google.com/maps/search/?api=1&query=Super+8+by+Wyndham+Gardiner+Yellowstone+Park+Area" target="_blank">Super 8 by Wyndham</a></td>
+        <td>Gardiner, MT — 2 nights</td>
+      </tr>
+      <tr>
+        <td class="dates">9/13 – 9/14</td>
+        <td>🏨 <a href="https://www.google.com/maps/search/?api=1&query=Holiday+Inn+Express+Hotel+%26+Suites+Belgrade+MT" target="_blank">Holiday Inn Express &amp; Suites</a></td>
+        <td>Belgrade, MT — 1 night, near BZN</td>
+      </tr>
+      <tr>
+        <td class="dates">Mon 9/14</td>
+        <td>✈ Flight — BZN → EWR</td>
+        <td>Departs 1:21 PM · Arrives 7:40 PM · <a href="https://www.google.com/maps/search/?api=1&query=Bozeman+Yellowstone+International+Airport" target="_blank">Bozeman Yellowstone Intl.</a></td>
+      </tr>
+    </table>
+  </section>
+
+  <section class="block">
+    <h2 class="section-title">Day-by-Day Plan</h2>
+
+    <div class="tabbar" id="tabbar"></div>
+    <div id="panels"></div>
+  </section>
+
+</main>
+
+<footer>
+  Vegan options confirmed where noted; in-park dining can be limited and menus change seasonally — worth calling ahead or asking your server to veganize a vegetarian dish. All lodging and drive times are estimates — road closures and wildlife jams in Yellowstone can add time, so keep the pace loose.
+</footer>
+
+<script>
+const days = [
+  {
+    tab:"Sun 9/6", label:"Sunday, September 6", base:"Arrive · Jackson, WY",
+    lead:"Evening flight in — keep it low-key after a late arrival.",
+    stops:[
+      {time:"6:27 PM", name:"Depart Newark (EWR)", url:"https://www.google.com/maps/search/?api=1&query=Newark+Liberty+International+Airport", blurb:"Evening flight to Jackson Hole."},
+      {time:"9:20 PM", name:"Arrive Jackson Hole Airport (JAC)", url:"https://www.google.com/maps/search/?api=1&query=Jackson+Hole+Airport", blurb:"Only commercial airport inside a national park. Pick up the rental car."},
+      {time:"Night", name:"Check in: Flat Creek Inn", url:"https://www.google.com/maps/search/?api=1&query=Flat+Creek+Inn+Jackson+WY", blurb:"Short 10-15 min drive from the airport — easiest option after a late landing."}
+    ],
+    meals:[
+      {slot:"Dinner (late)", name:"Jackson Whole Grocer &amp; Cafe", vegan:true, url:"https://www.google.com/maps/search/?api=1&query=Jackson+Whole+Grocer+%26+Cafe+Jackson+WY", note:"Grocery + hot bar open into the evening — easiest option for a late landing with a tired 4-year-old."}
+    ]
+  },
+  {
+    tab:"Mon 9/7", label:"Monday, September 7", base:"Jackson → Grand Teton",
+    lead:"A relaxed morning in town, then head up to the lodge on Jackson Lake.",
+    stops:[
+      {time:"Morning", name:"Jackson Town Square", url:"https://www.google.com/maps/search/?api=1&query=Jackson+Town+Square+WY", blurb:"Wander the antler arches — an easy start after a late arrival."},
+      {time:"Late morning", name:"National Museum of Wildlife Art", url:"https://www.google.com/maps/search/?api=1&query=National+Museum+of+Wildlife+Art+Jackson+WY", blurb:"Indoor, kid-friendly, great backup if weather turns."},
+      {time:"Afternoon", name:"Mormon Row &amp; Antelope Flats", url:"https://www.google.com/maps/search/?api=1&query=Mormon+Row+Historic+District+Grand+Teton", blurb:"Easy stroll past the iconic barns; good odds of bison and pronghorn."},
+      {time:"Evening", name:"Check in: Jackson Lake Lodge", url:"https://www.gtlc.com/lodges/jackson-lake-lodge", blurb:"Overlooking Jackson Lake and Willow Flats, with Teton views from the lobby."}
+    ],
+    meals:[
+      {slot:"Lunch", name:"Healthy Being Cafe &amp; Juicery", vegan:true, url:"https://www.google.com/maps/search/?api=1&query=Healthy+Being+Cafe+%26+Juicery+Jackson+WY", note:"Fully vegan-friendly, casual, quick — good fit before an afternoon of driving."},
+      {slot:"Dinner", name:"Pioneer Grill, Jackson Lake Lodge", vegan:true, url:"https://www.gtlc.com/dining/pioneer-grill-jackson-lake-lodge", note:"Classic diner counter on-site; ask for the veggie options — kid-friendly menu too."}
+    ]
+  },
+  {
+    tab:"Tue 9/8", label:"Tuesday, September 8", base:"Grand Teton National Park",
+    lead:"Full day in the park — boat shuttle, an easy waterfall walk, and a lakeside swim spot for your son.",
+    stops:[
+      {time:"Morning", name:"Jenny Lake boat shuttle", url:"https://www.google.com/maps/search/?api=1&query=Jenny+Lake+Boating+Grand+Teton", blurb:"Scenic ferry across Jenny Lake — a hit with kids."},
+      {time:"Late morning", name:"Hidden Falls", url:"https://www.google.com/maps/search/?api=1&query=Hidden+Falls+Grand+Teton+National+Park", blurb:"Easy ~1-mile round trip from the boat dock."},
+      {time:"Midday", name:"String Lake", url:"https://www.google.com/maps/search/?api=1&query=String+Lake+Grand+Teton+National+Park", blurb:"Flat lakeside path with shallow, calm water good for wading."},
+      {time:"Afternoon", name:"Teton Park Road scenic drive", url:"https://www.google.com/maps/search/?api=1&query=Teton+Park+Road+Grand+Teton", blurb:"Pull-offs for mountain views and wildlife spotting."},
+      {time:"Evening", name:"Snake River Overlook", url:"https://www.google.com/maps/search/?api=1&query=Snake+River+Overlook+Grand+Teton", blurb:"The classic Ansel Adams view, especially at sunset."}
+    ],
+    meals:[
+      {slot:"Lunch", name:"Colter Bay Cafe Court Pizzeria", vegan:false, url:"https://www.google.com/maps/search/?api=1&query=Colter+Bay+Cafe+Court+Pizzeria", note:"Casual pizza/salad counter ~15 min from Jenny Lake — ask about a veggie/no-cheese pizza."},
+      {slot:"Dinner", name:"Blue Heron Lounge, Jackson Lake Lodge", vegan:false, url:"https://www.gtlc.com/dining", note:"On-site lounge with mountain views; menu includes dairy-free and vegetarian dishes."}
+    ]
+  },
+  {
+    tab:"Wed 9/9", label:"Wednesday, September 9", base:"Grand Teton → Yellowstone (Old Faithful)",
+    lead:"Move north into Yellowstone, with a wildlife stop on the way and geysers in the afternoon.",
+    stops:[
+      {time:"Morning", name:"Oxbow Bend", url:"https://www.google.com/maps/search/?api=1&query=Oxbow+Bend+Grand+Teton", blurb:"Quick stop for moose sightings and Mt. Moran reflections."},
+      {time:"Late morning", name:"Drive to Yellowstone South Entrance", url:"https://www.google.com/maps/search/?api=1&query=Yellowstone+South+Entrance", blurb:"About 1-1.5 hours from Jackson Lake Lodge."},
+      {time:"Early afternoon", name:"Check in: Old Faithful Snow Lodge", url:"https://www.yellowstonenationalparklodges.com/lodging/old-faithful-snow-lodge/", blurb:"Central base, steps from the Upper Geyser Basin."},
+      {time:"Afternoon", name:"Old Faithful eruption + boardwalk", url:"https://www.google.com/maps/search/?api=1&query=Old+Faithful+Geyser+Yellowstone", blurb:"Flat, stroller-friendly boardwalk loop with predictable eruption times."}
+    ],
+    meals:[
+      {slot:"Lunch", name:"Picnic at Colter Bay / Flagg Ranch", vegan:true, url:"https://www.google.com/maps/search/?api=1&query=Flagg+Ranch+Grand+Teton", note:"Grab food to go before leaving Grand Teton — few dining options on this drive."},
+      {slot:"Dinner", name:"Obsidian Dining Room, Old Faithful Snow Lodge", vegan:true, url:"https://www.yellowstonenationalparklodges.com/restaurant/old-faithful-snow-lodge-obsidian-dining-room/", note:"On-site; confirmed vegan dishes include jackfruit tacos, polenta fritters, and baked tofu with vegetables."}
+    ]
+  },
+  {
+    tab:"Thu 9/10", label:"Thursday, September 10", base:"Yellowstone (Old Faithful area)",
+    lead:"The park's most iconic geyser basins, all on easy boardwalks.",
+    stops:[
+      {time:"Morning", name:"Grand Prismatic Overlook", url:"https://www.google.com/maps/search/?api=1&query=Grand+Prismatic+Overlook+Trail+Yellowstone", blurb:"Short uphill walk (~1 mile) for the best view of the spring's colors."},
+      {time:"Midday", name:"Midway Geyser Basin boardwalk", url:"https://www.google.com/maps/search/?api=1&query=Midway+Geyser+Basin+Yellowstone", blurb:"Flat boardwalk right up to Grand Prismatic and Excelsior Geyser."},
+      {time:"Afternoon", name:"West Thumb Geyser Basin", url:"https://www.google.com/maps/search/?api=1&query=West+Thumb+Geyser+Basin+Yellowstone", blurb:"Easy boardwalk with geysers right on the shore of Yellowstone Lake."},
+      {time:"Late afternoon", name:"Kepler Cascades", url:"https://www.google.com/maps/search/?api=1&query=Kepler+Cascades+Yellowstone", blurb:"Short walk to a roadside waterfall viewpoint."}
+    ],
+    meals:[
+      {slot:"Lunch", name:"Old Faithful General Store Grill", vegan:false, url:"https://www.google.com/maps/search/?api=1&query=Old+Faithful+General+Store+Yellowstone", note:"Quick counter service near the geyser basin — ask about the veggie burger without cheese."},
+      {slot:"Dinner", name:"Old Faithful Inn Dining Room", vegan:false, url:"https://www.google.com/maps/search/?api=1&query=Old+Faithful+Inn+Dining+Room", note:"Historic log-lodge dining room; menu typically flags vegetarian/vegan dishes — a fun change of scenery from the Snow Lodge."}
+    ]
+  },
+  {
+    tab:"Fri 9/11", label:"Friday, September 11", base:"Yellowstone → Gardiner, MT",
+    lead:"Cross to the north side of the park via the Canyon, with a stop at the classic overlook.",
+    stops:[
+      {time:"Morning", name:"Drive toward Canyon via Norris", url:"https://www.google.com/maps/search/?api=1&query=Norris+Geyser+Basin+Yellowstone", blurb:"Scenic drive with an optional geyser basin stop."},
+      {time:"Midday", name:"Artist Point", url:"https://www.google.com/maps/search/?api=1&query=Artist+Point+Yellowstone", blurb:"Short paved walk to the classic Grand Canyon of the Yellowstone view."},
+      {time:"Afternoon", name:"Hayden Valley wildlife drive", url:"https://www.google.com/maps/search/?api=1&query=Hayden+Valley+Yellowstone", blurb:"Slow drive-through — bison and often elk or bears visible from the road."},
+      {time:"Evening", name:"Check in: Super 8 by Wyndham", url:"https://www.google.com/maps/search/?api=1&query=Super+8+by+Wyndham+Gardiner+Yellowstone+Park+Area", blurb:"Gardiner, MT — gateway to the North Entrance and Lamar Valley."}
+    ],
+    meals:[
+      {slot:"Lunch", name:"Canyon Lodge Eatery", vegan:true, url:"https://www.google.com/maps/search/?api=1&query=Canyon+Lodge+Eatery+Yellowstone", note:"Cafeteria-style with a rotating vegan/vegetarian station — easy for a 4-year-old to pick their own."},
+      {slot:"Dinner", name:"Wonderland Grill", vegan:true, url:"https://www.google.com/maps/search/?api=1&query=Wonderland+Grill+Gardiner+MT", note:"In Gardiner; explicitly offers vegan, vegetarian, and gluten-free options."}
+    ]
+  },
+  {
+    tab:"Sat 9/12", label:"Saturday, September 12", base:"North Yellowstone",
+    lead:"Terraces in the morning, wildlife in the valley, easy afternoon.",
+    stops:[
+      {time:"Morning", name:"Mammoth Hot Springs Terraces", url:"https://www.google.com/maps/search/?api=1&query=Mammoth+Hot+Springs+Terraces+Yellowstone", blurb:"Flat boardwalk loop through the travertine terraces."},
+      {time:"Midday", name:"Lamar Valley wildlife drive", url:"https://www.google.com/maps/search/?api=1&query=Lamar+Valley+Yellowstone", blurb:"\"America's Serengeti\" — wolves, bison, and pronghorn, viewable from the car."},
+      {time:"Afternoon", name:"Gardiner riverside relax", url:"https://www.google.com/maps/search/?api=1&query=Yellowstone+River+Gardiner+MT", blurb:"Easy-paced afternoon along the Yellowstone River."}
+    ],
+    meals:[
+      {slot:"Lunch", name:"Mammoth Terrace Grill", vegan:false, url:"https://www.google.com/maps/search/?api=1&query=Mammoth+Terrace+Grill+Yellowstone", note:"Quick-service near the terraces, or pack a picnic for Lamar Valley if timing runs long."},
+      {slot:"Dinner", name:"Yellowstone Grill", vegan:true, url:"https://www.google.com/maps/search/?api=1&query=Yellowstone+Grill+Gardiner+MT", note:"Another solid Gardiner option with vegan/vegetarian/gluten-free choices — good for a second night in town."}
+    ]
+  },
+  {
+    tab:"Sun 9/13", label:"Sunday, September 13", base:"Gardiner → Belgrade, MT",
+    lead:"A relaxed last morning, then an unhurried drive to Belgrade ahead of tomorrow's early-afternoon flight.",
+    stops:[
+      {time:"Morning", name:"Free morning in Gardiner / Mammoth", url:"https://www.google.com/maps/search/?api=1&query=Gardiner+Montana", blurb:"Sleep in a bit, or one more easy walk before packing up."},
+      {time:"Midday", name:"Drive to Belgrade, MT", url:"https://www.google.com/maps/search/?api=1&query=Belgrade+Montana", blurb:"About 1.5-2 hours — a relaxed pace with buffer for tomorrow's flight."},
+      {time:"Evening", name:"Check in: Holiday Inn Express &amp; Suites", url:"https://www.google.com/maps/search/?api=1&query=Holiday+Inn+Express+Hotel+%26+Suites+Belgrade+MT", blurb:"Minutes from Bozeman Yellowstone Intl. — no rush in the morning."}
+    ],
+    meals:[
+      {slot:"Lunch", name:"MacKenzie River Pizza, Livingston/Bozeman", vegan:false, url:"https://www.google.com/maps/search/?api=1&query=MacKenzie+River+Pizza+Bozeman+MT", note:"En route; gluten-free and veggie-topped options available."},
+      {slot:"Dinner", name:"EVEN Kitchen &amp; Bar, Belgrade", vegan:true, url:"https://www.ihg.com/evenhotels/hotels/us/en/belgrade/bznbd/hoteldetail/dining", note:"Locally-sourced menu with vegan, gluten-free, and keto options — an easy walk from the hotel."}
+    ]
+  },
+  {
+    tab:"Mon 9/14", label:"Monday, September 14", base:"Fly home",
+    lead:"Return the car and head home.",
+    stops:[
+      {time:"Morning", name:"Return rental car", url:"https://www.google.com/maps/search/?api=1&query=Bozeman+Yellowstone+International+Airport+rental+car+return", blurb:"Allow extra time — it's an airport rental return before a mid-day flight."},
+      {time:"1:21 PM", name:"Fly BZN → Newark (EWR)", url:"https://www.google.com/maps/search/?api=1&query=Bozeman+Yellowstone+International+Airport", blurb:"Arrives 7:40 PM."}
+    ],
+    meals:[
+      {slot:"Breakfast/Lunch", name:"Copper Horse Restaurant, BZN Airport", vegan:true, url:"https://www.google.com/maps/search/?api=1&query=Copper+Horse+Restaurant+Bozeman+Airport", note:"Inside the terminal; veggie wrap can be made vegan on request — easiest pre-flight option."}
+    ]
+  }
+];
+
+const tabbar = document.getElementById('tabbar');
+const panels = document.getElementById('panels');
+
+days.forEach((d, i) => {
+  const btn = document.createElement('button');
+  btn.className = 'tabbtn' + (i===0 ? ' active' : '');
+  btn.innerHTML = `<span class="d">${d.tab.split(' ')[0]}</span>${d.tab.split(' ')[1]}`;
+  btn.onclick = () => selectDay(i);
+  tabbar.appendChild(btn);
+
+  const panel = document.createElement('div');
+  panel.className = 'daypanel' + (i===0 ? ' active' : '');
+
+  let stopsHtml = d.stops.map(s => `
+    <li>
+      <div class="stop-time">${s.time}</div>
+      <div class="stop-name"><a href="${s.url}" target="_blank" rel="noopener">${s.name}</a></div>
+      <div class="stop-blurb">${s.blurb}</div>
+    </li>`).join('');
+
+  let mealsHtml = d.meals.map(m => `
+    <div class="meal-card">
+      <div class="slot">${m.slot}</div>
+      <div class="rname"><a href="${m.url}" target="_blank" rel="noopener">${m.name}</a>${m.vegan ? '<span class="veg-badge">VEGAN OPTIONS</span>' : ''}</div>
+      <div class="note">${m.note}</div>
+    </div>`).join('');
+
+  panel.innerHTML = `
+    <div class="headline">
+      <h3 class="display">${d.label}</h3>
+      <div class="basecamp">${d.base}</div>
+    </div>
+    <div class="lead">${d.lead}</div>
+    <ol class="stops">${stopsHtml}</ol>
+    <div class="meals">
+      <h4>Meals nearby</h4>
+      <div class="meal-grid">${mealsHtml}</div>
+    </div>
+  `;
+  panels.appendChild(panel);
+});
+
+function selectDay(i){
+  document.querySelectorAll('.tabbtn').forEach((b,idx)=>b.classList.toggle('active', idx===i));
+  document.querySelectorAll('.daypanel').forEach((p,idx)=>p.classList.toggle('active', idx===i));
+}
+</script>
+
+</body>
+</html>

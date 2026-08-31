@@ -136,7 +136,7 @@
   }
   h2.section-title::before{content:"";width:22px;height:2px;background:var(--rust);display:inline-block;}
 
-  /* ===== Address subtext (used everywhere a location is linked) ===== */
+  /* ===== Address subtext ===== */
   .addr{
     font-size:11px;
     color:var(--bark);
@@ -145,6 +145,17 @@
     line-height:1.3;
     font-family:'Public Sans', 'Segoe UI', Arial, sans-serif;
   }
+
+  /* ===== Stroller badge ===== */
+  .stroller-badge{
+    display:inline-flex;align-items:center;gap:5px;
+    font-size:10px;font-weight:700;letter-spacing:0.03em;
+    padding:2px 8px;border-radius:10px;margin-top:6px;margin-right:6px;
+  }
+  .stroller-badge.yes{background:var(--forest);color:var(--paper);}
+  .stroller-badge.partial{background:var(--ochre);color:#2B241B;}
+  .stroller-badge.no{background:var(--rust);color:var(--paper);}
+  .stroller-note{font-size:12.5px;color:var(--bark);margin-top:4px;line-height:1.4;}
 
   /* ===== Logistics table ===== */
   table.logistics{width:100%;border-collapse:collapse;background:var(--paper);border:1px solid var(--line);}
@@ -228,12 +239,18 @@
   }
   .meal-card .note{font-size:12.5px;color:var(--bark);margin-top:6px;line-height:1.4;}
 
-  /* ===== Wildlife safety ===== */
-  .wildlife-intro{font-size:14.5px;color:var(--bark);line-height:1.6;margin-bottom:26px;max-width:720px;}
+  /* ===== Wildlife / Stroller safety shared styles ===== */
+  .safety-intro{font-size:14.5px;color:var(--bark);line-height:1.6;margin-bottom:26px;max-width:720px;}
   .wildlife-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:28px;}
   @media (max-width:640px){.wildlife-grid{grid-template-columns:1fr;}}
   .wcard{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:18px 20px;border-top:4px solid var(--forest);}
   .wcard.danger{border-top-color:var(--rust);}
+  .wcard-photos{display:flex;gap:8px;margin:-18px -20px 14px;}
+  .wcard-photos img{width:100%;height:140px;object-fit:cover;display:block;}
+  .wcard-photos img:only-child{border-radius:4px 4px 0 0;}
+  .wcard-photos img:first-child:not(:only-child){border-radius:4px 0 0 0;}
+  .wcard-photos img:last-child:not(:only-child){border-radius:0 4px 0 0;}
+  .photo-credit{font-size:9.5px;color:var(--bark);opacity:0.55;margin:-10px 0 12px;line-height:1.3;}
   .wcard h3{font-family:Georgia,serif;font-size:17px;margin:0 0 4px;color:var(--forest-dark);}
   .wcard .dist{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.04em;background:var(--forest);color:var(--paper);padding:2px 8px;border-radius:10px;margin-bottom:10px;}
   .wcard.danger .dist{background:var(--rust);}
@@ -250,6 +267,28 @@
 
   .source-note{font-size:12px;color:var(--bark);opacity:0.75;}
   .source-note a{color:var(--rust);}
+
+  /* ===== Stroller breakdown table ===== */
+  table.stroller-table{width:100%;border-collapse:collapse;background:var(--paper);border:1px solid var(--line);margin-bottom:28px;}
+  table.stroller-table th, table.stroller-table td{
+    text-align:left;padding:12px 14px;font-size:13.5px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.5;
+  }
+  table.stroller-table th{
+    background:var(--forest);color:var(--paper);font-weight:600;
+    text-transform:uppercase;font-size:10.5px;letter-spacing:0.06em;
+  }
+  table.stroller-table tr:last-child td{border-bottom:none;}
+  table.stroller-table td.stop-col{font-family:Georgia,serif;font-weight:700;color:var(--forest-dark);white-space:nowrap;}
+  table.stroller-table td.yes-col{color:var(--forest);font-weight:700;}
+  table.stroller-table td.no-col{color:var(--rust);font-weight:700;}
+  table.stroller-table td.partial-col{color:var(--ochre);font-weight:700;}
+
+  .rules-box{background:var(--paper);border:1px solid var(--line);border-left:5px solid var(--ochre);border-radius:4px;padding:20px 24px;margin-bottom:28px;}
+  .rules-box h3{font-family:Georgia,serif;font-size:17px;margin:0 0 14px;color:var(--forest-dark);}
+  .rules-box .rule{margin-bottom:14px;}
+  .rules-box .rule:last-child{margin-bottom:0;}
+  .rules-box .rule-title{font-weight:700;color:var(--rust);font-size:13.5px;}
+  .rules-box .rule-body{font-size:13.5px;color:var(--bark);line-height:1.55;}
 
   footer{max-width:980px;margin:0 auto;padding:0 24px 60px;font-size:12px;color:var(--bark);opacity:0.75;}
   footer a{color:var(--rust);}
@@ -294,20 +333,23 @@
 </main>
 
 <footer>
-  Vegan options confirmed where noted; in-park dining can be limited and menus change seasonally — worth calling ahead or asking your server to veganize a vegetarian dish. All lodging and drive times are estimates — road closures and wildlife jams in Yellowstone can add time, so keep the pace loose. Addresses for backcountry landmarks (trailheads, overlooks, geyser basins) are approximate — there's no street number inside the parks, so these point to the nearest named road or area.
+  Vegan options confirmed where noted; in-park dining menus change seasonally — worth calling ahead or asking your server to veganize a vegetarian dish. All lodging and drive times are estimates — road closures and wildlife jams in Yellowstone can add time, so keep the pace loose. Addresses for backcountry landmarks (trailheads, overlooks, geyser basins) are approximate — there's no street number inside the parks, so these point to the nearest named road or area.
 </footer>
 
 <script>
 /* ============ DATA ============ */
+
+// stroller: {level: "yes" | "partial" | "no", note: "..."}
 
 const days = [
   {
     tab:"Sun 9/6", label:"Sunday, September 6", base:"Arrive · Jackson, WY",
     lead:"Evening flight in — keep it low-key after a late arrival.",
     stops:[
-      {time:"6:27 PM", name:"Depart Newark (EWR)", url:"https://www.google.com/maps/search/?api=1&query=Newark+Liberty+International+Airport", addr:"3 Brewster Rd, Newark, NJ 07114", blurb:"Evening flight to Jackson Hole."},
-      {time:"9:20 PM", name:"Arrive Jackson Hole Airport (JAC)", url:"https://www.google.com/maps/search/?api=1&query=Jackson+Hole+Airport", addr:"1250 E Airport Rd, Jackson, WY 83001", blurb:"Only commercial airport inside a national park. Pick up the rental car."},
-      {time:"Night", name:"Check in: Flat Creek Inn", url:"https://www.google.com/maps/search/?api=1&query=Flat+Creek+Inn+Jackson+WY", addr:"1935 N US Hwy 89, Jackson, WY 83001", blurb:"Short 10-15 min drive from the airport — easiest option after a late landing."}
+      {time:"6:27 PM", name:"Depart Newark (EWR)", url:"https://www.google.com/maps/search/?api=1&query=Newark+Liberty+International+Airport", addr:"3 Brewster Rd, Newark, NJ 07114", blurb:"Evening flight to Jackson Hole.", stroller:null},
+      {time:"9:20 PM", name:"Arrive Jackson Hole Airport (JAC)", url:"https://www.google.com/maps/search/?api=1&query=Jackson+Hole+Airport", addr:"1250 E Airport Rd, Jackson, WY 83001", blurb:"Only commercial airport inside a national park.", stroller:null},
+      {time:"Before 10:00 PM", name:"Pickup Hertz Rental Car", url:"https://maps.app.goo.gl/ee1EKynPZXFBECao7", addr:"1250 E Airport Rd, Jackson, WY 83001", blurb:"Pick up the rental car from the Hertz Counter at the Airport.", stroller:null},
+      {time:"Night", name:"Check in: Flat Creek Inn", url:"https://www.google.com/maps/search/?api=1&query=Flat+Creek+Inn+Jackson+WY", addr:"1935 N US Hwy 89, Jackson, WY 83001", blurb:"Short 10-15 min drive from the airport — easiest option after a late landing.", stroller:null}
     ],
     meals:[]
   },
@@ -315,13 +357,19 @@ const days = [
     tab:"Mon 9/7", label:"Monday, September 7", base:"Jackson → Grand Teton",
     lead:"An early sunrise stop at Mormon Row, a grocery run, then a relaxed morning in town before heading up to the lodge.",
     stops:[
-      {time:"6:00 AM", name:"Mormon Row &amp; Antelope Flats (sunrise)", url:"https://www.google.com/maps/search/?api=1&query=Mormon+Row+Historic+District+Grand+Teton", addr:"Mormon Row Rd, Grand Teton National Park, WY 83013", blurb:"Best light and fewest crowds of the day at the iconic barns; good odds of bison and pronghorn."},
-      {time:"Morning", name:"Jackson Town Square", url:"https://www.google.com/maps/search/?api=1&query=Jackson+Town+Square+WY", addr:"Broadway &amp; Cache St, Jackson, WY 83001", blurb:"Wander the antler arches back in town after the sunrise stop."},
-      {time:"Late morning", name:"National Museum of Wildlife Art", url:"https://www.google.com/maps/search/?api=1&query=National+Museum+of+Wildlife+Art+Jackson+WY", addr:"2820 Rungius Rd, Jackson, WY 83001", blurb:"Indoor, kid-friendly, great backup if weather turns."},
-      {time:"Afternoon", name:"Check in: Jackson Lake Lodge", url:"https://www.gtlc.com/lodges/jackson-lake-lodge", addr:"101 Jackson Lake Lodge Rd, Moran, WY 83013", blurb:"Overlooking Jackson Lake and Willow Flats, with Teton views from the lobby."}
+      {time:"6:00 AM", name:"Mormon Row &amp; Antelope Flats (sunrise)", url:"https://www.google.com/maps/search/?api=1&query=Mormon+Row+Historic+District+Grand+Teton", addr:"Mormon Row Rd, Grand Teton National Park, WY 83013", blurb:"Best light and fewest crowds of the day at the iconic barns; good odds of bison and pronghorn.",
+        stroller:{level:"yes", note:"Flat dirt roads and paths around the historic barns work fine with a stroller."}},
+      {time:"Morning", name:"Jackson Town Square", url:"https://www.google.com/maps/search/?api=1&query=Jackson+Town+Square+WY", addr:"Broadway &amp; Cache St, Jackson, WY 83001", blurb:"Wander the antler arches back in town after the sunrise stop.",
+        stroller:{level:"yes", note:"Paved sidewalks throughout the square."}},
+      {time:"Late morning", name:"National Museum of Wildlife Art", url:"https://www.google.com/maps/search/?api=1&query=National+Museum+of+Wildlife+Art+Jackson+WY", addr:"2820 Rungius Rd, Jackson, WY 83001", blurb:"Indoor, kid-friendly, great backup if weather turns.",
+        stroller:{level:"yes", note:"Fully indoor and wheelchair/stroller accessible."}},
+      {time:"After lunch grocery run", name:"Albertsons", url:"https://www.google.com/maps/search/?api=1&query=Albertsons+105+Buffalo+Way+Jackson+WY+83001", addr:"105 Buffalo Way, Jackson, WY 83001", blurb:"Stock up on snacks and picnic supplies before heading into the parks.",
+        stroller:{level:"yes", note:"Standard grocery store, fully accessible."}},
+      {time:"Afternoon", name:"Bear spray rental pickup — Bear Aware", url:"https://www.google.com/maps/search/?api=1&query=Bear+Aware+565+N+Cache+St+Jackson+WY", addr:"565 N Cache St Unit #1, Jackson, WY 83001", blurb:"Full-service pickup (co-located with Teton Backcountry Rentals); rent one canister per adult, comes with a holster and a quick how-to-use briefing.",
+        stroller:null},
+      {time:"Late Afternoon", name:"Check in: Jackson Lake Lodge", url:"https://www.gtlc.com/lodges/jackson-lake-lodge", addr:"101 Jackson Lake Lodge Rd, Moran, WY 83013", blurb:"Overlooking Jackson Lake and Willow Flats, with Teton views from the lobby.", stroller:null}
     ],
     meals:[
-      {slot:"Morning grocery run", name:"Albertsons", vegan:true, url:"https://www.google.com/maps/search/?api=1&query=Albertsons+105+Buffalo+Way+Jackson+WY+83001", addr:"105 Buffalo Way, Jackson, WY 83001", note:"Stock up on snacks and picnic supplies before heading into the parks."},
       {slot:"Lunch", name:"Healthy Being Cafe &amp; Juicery", vegan:true, url:"https://www.google.com/maps/search/?api=1&query=Healthy+Being+Cafe+%26+Juicery+Jackson+WY", addr:"165 E Broadway, Jackson, WY 83001", note:"Fully vegan-friendly, casual, quick — good fit before an afternoon of driving."},
       {slot:"Dinner", name:"Pioneer Grill, Jackson Lake Lodge", vegan:true, url:"https://www.gtlc.com/dining/pioneer-grill-jackson-lake-lodge", addr:"101 Jackson Lake Lodge Rd, Moran, WY 83013", note:"Classic diner counter on-site; ask for the veggie options — kid-friendly menu too."}
     ]
@@ -330,11 +378,16 @@ const days = [
     tab:"Tue 9/8", label:"Tuesday, September 8", base:"Grand Teton National Park",
     lead:"Full day in the park — boat shuttle, an easy waterfall walk, and a lakeside swim spot for your son.",
     stops:[
-      {time:"Morning", name:"Jenny Lake boat shuttle", url:"https://www.google.com/maps/search/?api=1&query=Jenny+Lake+Boating+Grand+Teton", addr:"Teton Park Rd, Grand Teton National Park, WY 83012", blurb:"Scenic ferry across Jenny Lake — a hit with kids."},
-      {time:"Late morning", name:"Hidden Falls", url:"https://www.google.com/maps/search/?api=1&query=Hidden+Falls+Grand+Teton+National+Park", addr:"Jenny Lake Trail, Grand Teton National Park, WY 83012", blurb:"Easy ~1-mile round trip from the boat dock."},
-      {time:"Midday", name:"String Lake", url:"https://www.google.com/maps/search/?api=1&query=String+Lake+Grand+Teton+National+Park", addr:"String Lake Rd, Grand Teton National Park, WY 83012", blurb:"Flat lakeside path with shallow, calm water good for wading."},
-      {time:"Afternoon", name:"Teton Park Road scenic drive", url:"https://www.google.com/maps/search/?api=1&query=Teton+Park+Road+Grand+Teton", addr:"Teton Park Rd, Grand Teton National Park, WY", blurb:"Pull-offs for mountain views and wildlife spotting."},
-      {time:"Evening", name:"Snake River Overlook", url:"https://www.google.com/maps/search/?api=1&query=Snake+River+Overlook+Grand+Teton", addr:"US-26/89/191, Grand Teton National Park, WY 83013", blurb:"The classic Ansel Adams view, especially at sunset."}
+      {time:"Morning", name:"Jenny Lake boat shuttle", url:"https://www.google.com/maps/search/?api=1&query=Jenny+Lake+Boating+Grand+Teton", addr:"Teton Park Rd, Grand Teton National Park, WY 83012", blurb:"Scenic ferry across Jenny Lake — a hit with kids.",
+        stroller:{level:"no", note:"Boarding the boat and the docks are tight for a stroller — this is also an active bear corridor, so carry bear spray."}},
+      {time:"Late morning", name:"Hidden Falls", url:"https://www.google.com/maps/search/?api=1&query=Hidden+Falls+Grand+Teton+National+Park", addr:"Jenny Lake Trail, Grand Teton National Park, WY 83012", blurb:"Easy ~1-mile round trip from the boat dock.",
+        stroller:{level:"no", note:"Rocky, uneven trail from the boat dock — a child carrier works much better here."}},
+      {time:"Midday", name:"String Lake", url:"https://www.google.com/maps/search/?api=1&query=String+Lake+Grand+Teton+National+Park", addr:"String Lake Rd, Grand Teton National Park, WY 83012", blurb:"Flat lakeside path with calm water and reflections of the Tetons — quieter than Jenny Lake, with a good chance of moose or beaver.",
+        stroller:{level:"partial", note:"The hard-packed path from the picnic area to the shallow lakeshore is stroller-friendly; the full loop trail gets narrow and root-heavy."}},
+      {time:"Afternoon", name:"Teton Park Road scenic drive", url:"https://www.google.com/maps/search/?api=1&query=Teton+Park+Road+Grand+Teton", addr:"Teton Park Rd, Grand Teton National Park, WY", blurb:"Pull-offs for mountain views and wildlife spotting.",
+        stroller:{level:"yes", note:"Viewed from the car with paved pullouts — no stroller needed."}},
+      {time:"Evening", name:"Snake River Overlook", url:"https://www.google.com/maps/search/?api=1&query=Snake+River+Overlook+Grand+Teton", addr:"US-26/89/191, Grand Teton National Park, WY 83013", blurb:"The classic Ansel Adams view, especially at sunset.",
+        stroller:{level:"yes", note:"Short paved path from the parking area to the viewing platform."}}
     ],
     meals:[
       {slot:"Lunch", name:"Colter Bay Cafe Court Pizzeria", vegan:false, url:"https://www.google.com/maps/search/?api=1&query=Colter+Bay+Cafe+Court+Pizzeria", addr:"Colter Bay Village, Moran, WY 83013", note:"Casual pizza/salad counter ~15 min from Jenny Lake — ask about a veggie/no-cheese pizza."},
@@ -345,10 +398,12 @@ const days = [
     tab:"Wed 9/9", label:"Wednesday, September 9", base:"Grand Teton → Yellowstone (Old Faithful)",
     lead:"Move north into Yellowstone, with a wildlife stop on the way and geysers in the afternoon.",
     stops:[
-      {time:"Morning", name:"Oxbow Bend", url:"https://www.google.com/maps/search/?api=1&query=Oxbow+Bend+Grand+Teton", addr:"US-89/191/287, Grand Teton National Park, WY 83013", blurb:"Quick stop for moose sightings and Mt. Moran reflections."},
-      {time:"Late morning", name:"Drive to Yellowstone South Entrance", url:"https://www.google.com/maps/search/?api=1&query=Yellowstone+South+Entrance", addr:"South Entrance Rd, Yellowstone National Park, WY 83013", blurb:"About 1-1.5 hours from Jackson Lake Lodge."},
-      {time:"Early afternoon", name:"Check in: Old Faithful Snow Lodge", url:"https://www.yellowstonenationalparklodges.com/lodgings/cabin/old-faithful-snow-lodge-cabins-summer/", addr:"2051 Snow Lodge Ave, Yellowstone National Park, WY 82190", blurb:"Central base, steps from the Upper Geyser Basin."},
-      {time:"Afternoon", name:"Old Faithful eruption + boardwalk", url:"https://www.google.com/maps/search/?api=1&query=Old+Faithful+Geyser+Yellowstone", addr:"Old Faithful, Yellowstone National Park, WY 82190", blurb:"Flat, stroller-friendly boardwalk loop with predictable eruption times."}
+      {time:"Morning", name:"Oxbow Bend", url:"https://www.google.com/maps/search/?api=1&query=Oxbow+Bend+Grand+Teton", addr:"US-89/191/287, Grand Teton National Park, WY 83013", blurb:"Quick stop for moose sightings and Mt. Moran reflections.",
+        stroller:{level:"yes", note:"Flat roadside pullout right off the highway."}},
+      {time:"Late morning", name:"Drive to Yellowstone South Entrance", url:"https://www.google.com/maps/search/?api=1&query=Yellowstone+South+Entrance", addr:"South Entrance Rd, Yellowstone National Park, WY 83013", blurb:"About 1-1.5 hours from Jackson Lake Lodge.", stroller:null},
+      {time:"Early afternoon", name:"Check in: Old Faithful Snow Lodge", url:"https://www.yellowstonenationalparklodges.com/lodgings/cabin/old-faithful-snow-lodge-cabins-summer/", addr:"2051 Snow Lodge Ave, Yellowstone National Park, WY 82190", blurb:"Central base, steps from the Upper Geyser Basin.", stroller:null},
+      {time:"Afternoon", name:"Old Faithful eruption + boardwalk", url:"https://www.google.com/maps/search/?api=1&query=Old+Faithful+Geyser+Yellowstone", addr:"Old Faithful, Yellowstone National Park, WY 82190", blurb:"Flat, stroller-friendly boardwalk loop with predictable eruption times.",
+        stroller:{level:"yes", note:"Miles of wide, flat wooden boardwalk and paved paths — very easy for any stroller. Grizzlies occasionally wander onto the boardwalks here, so keep bear spray handy even in this developed area."}}
     ],
     meals:[
       {slot:"Lunch", name:"Picnic at Colter Bay / Flagg Ranch", vegan:true, url:"https://www.google.com/maps/search/?api=1&query=Flagg+Ranch+Grand+Teton", addr:"100 Grassy Lake Rd, Moran, WY 83013", note:"Grab food to go before leaving Grand Teton — few dining options on this drive."},
@@ -359,10 +414,14 @@ const days = [
     tab:"Thu 9/10", label:"Thursday, September 10", base:"Yellowstone (Old Faithful area)",
     lead:"The park's most iconic geyser basins, all on easy boardwalks.",
     stops:[
-      {time:"Morning", name:"Grand Prismatic Overlook", url:"https://www.google.com/maps/search/?api=1&query=Grand+Prismatic+Overlook+Trail+Yellowstone", addr:"Fairy Falls Trailhead, Yellowstone National Park, WY 82190", blurb:"Short uphill walk (~1 mile) for the best view of the spring's colors."},
-      {time:"Midday", name:"Midway Geyser Basin boardwalk", url:"https://www.google.com/maps/search/?api=1&query=Midway+Geyser+Basin+Yellowstone", addr:"Grand Loop Rd, Yellowstone National Park, WY 82190", blurb:"Flat boardwalk right up to Grand Prismatic and Excelsior Geyser."},
-      {time:"Afternoon", name:"West Thumb Geyser Basin", url:"https://www.google.com/maps/search/?api=1&query=West+Thumb+Geyser+Basin+Yellowstone", addr:"Grand Loop Rd, Yellowstone National Park, WY 82190", blurb:"Easy boardwalk with geysers right on the shore of Yellowstone Lake."},
-      {time:"Late afternoon", name:"Kepler Cascades", url:"https://www.google.com/maps/search/?api=1&query=Kepler+Cascades+Yellowstone", addr:"South Entrance Rd, Yellowstone National Park, WY 82190", blurb:"Short walk to a roadside waterfall viewpoint."}
+      {time:"Morning", name:"Grand Prismatic Overlook", url:"https://www.google.com/maps/search/?api=1&query=Grand+Prismatic+Overlook+Trail+Yellowstone", addr:"Fairy Falls Trailhead, Yellowstone National Park, WY 82190", blurb:"Short uphill walk (~1 mile) for the best view of the spring's colors.",
+        stroller:{level:"no", note:"This is an uphill dirt/gravel trail, not a boardwalk — a carrier works better than wheels here."}},
+      {time:"Midday", name:"Midway Geyser Basin boardwalk", url:"https://www.google.com/maps/search/?api=1&query=Midway+Geyser+Basin+Yellowstone", addr:"Grand Loop Rd, Yellowstone National Park, WY 82190", blurb:"Flat boardwalk right up to Grand Prismatic and Excelsior Geyser.",
+        stroller:{level:"yes", note:"The entire loop is a wide, flat boardwalk. Expect heavy crowds, so navigate carefully."}},
+      {time:"Afternoon", name:"West Thumb Geyser Basin", url:"https://www.google.com/maps/search/?api=1&query=West+Thumb+Geyser+Basin+Yellowstone", addr:"Grand Loop Rd, Yellowstone National Park, WY 82190", blurb:"Easy boardwalk with geysers right on the shore of Yellowstone Lake.",
+        stroller:{level:"yes", note:"Short, completely flat boardwalk loop right on the lake edge — excellent visibility."}},
+      {time:"Late afternoon", name:"Kepler Cascades", url:"https://www.google.com/maps/search/?api=1&query=Kepler+Cascades+Yellowstone", addr:"South Entrance Rd, Yellowstone National Park, WY 82190", blurb:"Short walk to a roadside waterfall viewpoint.",
+        stroller:{level:"yes", note:"Short paved path from the roadside parking area to the viewing platform."}}
     ],
     meals:[
       {slot:"Lunch", name:"Old Faithful General Store Grill", vegan:false, url:"https://www.google.com/maps/search/?api=1&query=Old+Faithful+General+Store+Yellowstone", addr:"Old Faithful, Yellowstone National Park, WY 82190", note:"Quick counter service near the geyser basin — ask about the veggie burger without cheese."},
@@ -373,10 +432,13 @@ const days = [
     tab:"Fri 9/11", label:"Friday, September 11", base:"Yellowstone → Gardiner, MT",
     lead:"Cross to the north side of the park via the Canyon, with a stop at the classic overlook.",
     stops:[
-      {time:"Morning", name:"Drive toward Canyon via Norris", url:"https://www.google.com/maps/search/?api=1&query=Norris+Geyser+Basin+Yellowstone", addr:"Grand Loop Rd, Yellowstone National Park, WY 82190", blurb:"Scenic drive with an optional geyser basin stop."},
-      {time:"Midday", name:"Artist Point", url:"https://www.google.com/maps/search/?api=1&query=Artist+Point+Yellowstone", addr:"South Rim Dr, Yellowstone National Park, WY 82190", blurb:"Short paved walk to the classic Grand Canyon of the Yellowstone view."},
-      {time:"Afternoon", name:"Hayden Valley wildlife drive", url:"https://www.google.com/maps/search/?api=1&query=Hayden+Valley+Yellowstone", addr:"Grand Loop Rd, Yellowstone National Park, WY 82190", blurb:"Slow drive-through — bison and often elk or bears visible from the road."},
-      {time:"Evening", name:"Check in: Super 8 by Wyndham", url:"https://www.google.com/maps/search/?api=1&query=Super+8+by+Wyndham+Gardiner+Yellowstone+Park+Area", addr:"702 Scott St W, Gardiner, MT 59030", blurb:"Gardiner, MT — gateway to the North Entrance and Lamar Valley."}
+      {time:"Morning", name:"Drive toward Canyon via Norris", url:"https://www.google.com/maps/search/?api=1&query=Norris+Geyser+Basin+Yellowstone", addr:"Grand Loop Rd, Yellowstone National Park, WY 82190", blurb:"Scenic drive with an optional geyser basin stop.",
+        stroller:{level:"partial", note:"Porcelain Basin's boardwalk is fairly flat and short; Back Basin's boardwalk is longer with some uneven, hilly sections."}},
+      {time:"Midday", name:"Artist Point", url:"https://www.google.com/maps/search/?api=1&query=Artist+Point+Yellowstone", addr:"South Rim Dr, Yellowstone National Park, WY 82190", blurb:"Short paved walk to the classic Grand Canyon of the Yellowstone view.",
+        stroller:{level:"yes", note:"Paved, accessible overlook. Skip the nearby Brink of the Lower Falls Trail — it's steep with ~330 stairs, not stroller-passable."}},
+      {time:"Afternoon", name:"Hayden Valley wildlife drive", url:"https://www.google.com/maps/search/?api=1&query=Hayden+Valley+Yellowstone", addr:"Grand Loop Rd, Yellowstone National Park, WY 82190", blurb:"Slow drive-through — bison and often elk or bears visible from the road.",
+        stroller:{level:"na", note:"Viewed from inside the vehicle at paved turnouts — no stroller needed unless you step onto a dirt path."}},
+      {time:"Evening", name:"Check in: Super 8 by Wyndham", url:"https://www.google.com/maps/search/?api=1&query=Super+8+by+Wyndham+Gardiner+Yellowstone+Park+Area", addr:"702 Scott St W, Gardiner, MT 59030", blurb:"Gardiner, MT — gateway to the North Entrance and Lamar Valley.", stroller:null}
     ],
     meals:[
       {slot:"Lunch", name:"Canyon Lodge Eatery", vegan:true, url:"https://www.google.com/maps/search/?api=1&query=Canyon+Lodge+Eatery+Yellowstone", addr:"Canyon Village, Yellowstone National Park, WY 82190", note:"Cafeteria-style with a rotating vegan/vegetarian station — easy for a 4-year-old to pick their own."},
@@ -387,9 +449,12 @@ const days = [
     tab:"Sat 9/12", label:"Saturday, September 12", base:"North Yellowstone",
     lead:"Terraces in the morning, wildlife in the valley, easy afternoon.",
     stops:[
-      {time:"Morning", name:"Mammoth Hot Springs Terraces", url:"https://www.google.com/maps/search/?api=1&query=Mammoth+Hot+Springs+Terraces+Yellowstone", addr:"Mammoth, Yellowstone National Park, WY 82190", blurb:"Flat boardwalk loop through the travertine terraces."},
-      {time:"Midday", name:"Lamar Valley wildlife drive", url:"https://www.google.com/maps/search/?api=1&query=Lamar+Valley+Yellowstone", addr:"Northeast Entrance Rd, Yellowstone National Park, WY 82190", blurb:"\"America's Serengeti\" — wolves, bison, and pronghorn, viewable from the car."},
-      {time:"Afternoon", name:"Gardiner riverside relax", url:"https://www.google.com/maps/search/?api=1&query=Yellowstone+River+Gardiner+MT", addr:"Gardiner, MT 59030", blurb:"Easy-paced afternoon along the Yellowstone River."}
+      {time:"Morning", name:"Mammoth Hot Springs Terraces", url:"https://www.google.com/maps/search/?api=1&query=Mammoth+Hot+Springs+Terraces+Yellowstone", addr:"Mammoth, Yellowstone National Park, WY 82190", blurb:"Flat boardwalk loop through the travertine terraces.",
+        stroller:{level:"partial", note:"The Lower Terraces have paved paths and boardwalk that handle a stroller well; the Upper Terraces require climbing several flights of stairs."}},
+      {time:"Midday", name:"Lamar Valley wildlife drive", url:"https://www.google.com/maps/search/?api=1&query=Lamar+Valley+Yellowstone", addr:"Northeast Entrance Rd, Yellowstone National Park, WY 82190", blurb:"\"America's Serengeti\" — wolves, bison, and pronghorn, viewable from the car.",
+        stroller:{level:"na", note:"Viewed from inside the vehicle at paved turnouts — no stroller needed."}},
+      {time:"Afternoon", name:"Gardiner riverside relax", url:"https://www.google.com/maps/search/?api=1&query=Yellowstone+River+Gardiner+MT", addr:"Gardiner, MT 59030", blurb:"Easy-paced afternoon along the Yellowstone River.",
+        stroller:{level:"yes", note:"Paved riverside path right in town."}}
     ],
     meals:[
       {slot:"Lunch", name:"Mammoth Terrace Grill", vegan:false, url:"https://www.google.com/maps/search/?api=1&query=Mammoth+Terrace+Grill+Yellowstone", addr:"Mammoth, Yellowstone National Park, WY 82190", note:"Quick-service near the terraces, or pack a picnic for Lamar Valley if timing runs long."},
@@ -400,9 +465,11 @@ const days = [
     tab:"Sun 9/13", label:"Sunday, September 13", base:"Gardiner → Belgrade, MT",
     lead:"A relaxed last morning, then an unhurried drive to Belgrade ahead of tomorrow's early-afternoon flight.",
     stops:[
-      {time:"Morning", name:"Free morning in Gardiner / Mammoth", url:"https://www.google.com/maps/search/?api=1&query=Gardiner+Montana", addr:"Gardiner, MT 59030", blurb:"Sleep in a bit, or one more easy walk before packing up."},
-      {time:"Midday", name:"Drive to Belgrade, MT", url:"https://www.google.com/maps/search/?api=1&query=Belgrade+Montana", addr:"Belgrade, MT 59714", blurb:"About 1.5-2 hours — a relaxed pace with buffer for tomorrow's flight."},
-      {time:"Evening", name:"Check in: Holiday Inn Express &amp; Suites", url:"https://www.google.com/maps/search/?api=1&query=Holiday+Inn+Express+Hotel+%26+Suites+Belgrade+MT", addr:"309 W Madison Ave, Belgrade, MT 59714", blurb:"Minutes from Bozeman Yellowstone Intl. — no rush in the morning."}
+      {time:"Morning", name:"Free morning in Gardiner / Mammoth", url:"https://www.google.com/maps/search/?api=1&query=Gardiner+Montana", addr:"Gardiner, MT 59030", blurb:"Sleep in a bit, or one more easy walk before packing up.", stroller:null},
+      {time:"Midday", name:"Drive to Belgrade, MT", url:"https://www.google.com/maps/search/?api=1&query=Belgrade+Montana", addr:"Belgrade, MT 59714", blurb:"About 1.5-2 hours — a relaxed pace with buffer for tomorrow's flight.", stroller:null},
+      {time:"Afternoon", name:"Bear spray rental drop-off — Bear Aware", url:"https://www.google.com/maps/search/?api=1&query=Central+Valley+Fire+District+Station+1+Belgrade+MT", addr:"215 Wings Way, Belgrade, MT 59714", blurb:"Closest Bear Aware network drop-off to your Belgrade hotel — return the canisters here on your way in. Get a receipt for your records.", stroller:null},
+      {time:"Evening", name:"Check in: Holiday Inn Express &amp; Suites", url:"https://www.google.com/maps/search/?api=1&query=Holiday+Inn+Express+Hotel+%26+Suites+Belgrade+MT", addr:"309 W Madison Ave, Belgrade, MT 59714", blurb:"Minutes from Bozeman Yellowstone Intl. — no rush in the morning.", stroller:null},
+      {time:"Night", name:"Return Hertz Rental Car", url:"https://maps.app.goo.gl/38DLeG5PzgkPzttR7", addr:"850 Gallatin Field Rd, Belgrade, MT 59714", blurb:"Drop-off the night before the flight home.", stroller:null},
     ],
     meals:[
       {slot:"Lunch", name:"MacKenzie River Pizza, Bozeman", vegan:false, url:"https://www.google.com/maps/search/?api=1&query=MacKenzie+River+Pizza+Bozeman+MT", addr:"Bozeman, MT 59715", note:"En route; gluten-free and veggie-topped options available."},
@@ -411,10 +478,9 @@ const days = [
   },
   {
     tab:"Mon 9/14", label:"Monday, September 14", base:"Fly home",
-    lead:"Grab lunch to go, return the car, and head home.",
+    lead:"Grab lunch to go and head home.",
     stops:[
-      {time:"Morning", name:"Return rental car", url:"https://www.google.com/maps/search/?api=1&query=Bozeman+Yellowstone+International+Airport+rental+car+return", addr:"850 Gallatin Field Rd, Belgrade, MT 59714", blurb:"Allow extra time — it's an airport rental return before a mid-day flight."},
-      {time:"1:21 PM", name:"Fly BZN → Newark (EWR)", url:"https://www.google.com/maps/search/?api=1&query=Bozeman+Yellowstone+International+Airport", addr:"850 Gallatin Field Rd, Belgrade, MT 59714", blurb:"Arrives 7:40 PM."}
+      {time:"1:21 PM", name:"Fly BZN → Newark (EWR)", url:"https://www.google.com/maps/search/?api=1&query=Bozeman+Yellowstone+International+Airport", addr:"850 Gallatin Field Rd, Belgrade, MT 59714", blurb:"Arrives 7:40 PM.", stroller:null}
     ],
     meals:[
       {slot:"Lunch to go (~10:00 AM)", name:"Curry Express", vegan:true, url:"https://www.google.com/maps/search/?api=1&query=Curry+Express+90+W+Madison+Ave+Ste+C+Belgrade+MT+59714", addr:"90 W Madison Ave Ste C, Belgrade, MT 59714", note:"Pick up lunch here before heading to the airport."},
@@ -480,10 +546,11 @@ const dayByDayHtml = `
 const wildlifeHtml = `
   <section class="block">
     <h2 class="section-title">Wildlife Safety — Yellowstone &amp; Grand Teton</h2>
-    <p class="wildlife-intro">Both parks are home to wild, unpredictable animals, and wildlife-related injuries are common precisely because animals here can seem tame. The core rule in both parks: never approach or feed any wild animal, keep your distance, and never come between an adult animal and its young.</p>
+    <p class="safety-intro">Both parks are home to wild, unpredictable animals, and wildlife-related injuries are common precisely because animals here can seem tame. The core rule in both parks: never approach or feed any wild animal, keep your distance, and never come between an adult animal and its young.</p>
 
     <div class="wildlife-grid">
       <div class="wcard danger">
+        <div class="wcard-photos"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Grizzly_Bear_Yellowstone.jpg" alt="Grizzly bear in Yellowstone" style="max-width: 100%; height: auto; display: block;"></div>
         <h3>Bears (grizzly &amp; black)</h3>
         <div class="dist">Stay 100 yards away</div>
         <ul>
@@ -499,6 +566,7 @@ const wildlifeHtml = `
       </div>
 
       <div class="wcard danger">
+        <div class="wcard-photos"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/American_Bison_(Yellowstone).jpg" alt="American bison in Yellowstone" style="max-width: 100%; height: auto; display: block;"></div>
         <h3>Bison</h3>
         <div class="dist">Stay 25 yards away</div>
         <ul>
@@ -510,6 +578,7 @@ const wildlifeHtml = `
       </div>
 
       <div class="wcard">
+        <div class="wcard-photos"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Yellowstone_Elk.jpg" alt="Elk in Yellowstone" style="max-width: 100%; height: auto; display: block;"></div>
         <h3>Elk</h3>
         <div class="dist">Stay 25 yards away</div>
         <ul>
@@ -520,12 +589,27 @@ const wildlifeHtml = `
       </div>
 
       <div class="wcard">
+        <div class="wcard-photos">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Grey_Wolf_Portrait.jpg" alt="Gray wolf" style="max-width: 49%; height: auto; display: block;">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Puma_(Puma_concolor).jpg" alt="Cougar / mountain lion" style="max-width: 49%; height: auto; display: block;">
+        </div>
         <h3>Wolves &amp; Cougars</h3>
         <div class="dist">Stay 100 yards away</div>
         <ul>
           <li>Skilled predators, but confrontations with people are very rare in both parks.</li>
           <li>If you encounter either, stand your ground — don't run.</li>
           <li>Don't handle wolf scat or approach a den or kill site.</li>
+        </ul>
+      </div>
+
+      <div class="wcard">
+        <div class="wcard-photos"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Pronghorn_Yellowstone.jpg" alt="Pronghorn in Grand Teton" style="max-width: 100%; height: auto; display: block;"></div>
+        <h3>Pronghorn &amp; other wildlife</h3>
+        <div class="dist">Stay 25 yards away</div>
+        <ul>
+          <li>Pronghorn are the fastest land animal in North America — common at Mormon Row and the open sagebrush flats of Grand Teton.</li>
+          <li>Generally not a safety concern, but the same rule applies: don't approach, and never block their path (they're built to outrun predators, not jump fences).</li>
+          <li>Also watch for moose near rivers and lakeshores (Oxbow Bend, String Lake) — they look docile but can charge, especially cows with calves.</li>
         </ul>
       </div>
     </div>
@@ -586,11 +670,37 @@ const wildlifeHtml = `
   </section>
 `;
 
+/* ============ RENDER: Stroller Safety ============ */
+const strollerHtml = `
+  <section class="block">
+    <h2 class="section-title">Stroller Safety — Bear Country</h2>
+    <p class="safety-intro">Below are the general practices worth keeping in mind wherever you're pushing a stroller in bear country.</p>
+
+    <div class="rules-box">
+      <h3>Stroller Safety Rules in Bear Country</h3>
+      <div class="rule">
+        <div class="rule-title">Keep them strapped in</div>
+        <div class="rule-body">A 4-year-old can bolt suddenly if excited or scared. Keeping your son buckled into the stroller on boardwalks keeps him right with you and unable to run toward a thermal feature or a wild animal.</div>
+      </div>
+      <div class="rule">
+        <div class="rule-title">Never leave snacks in the stroller</div>
+        <div class="rule-body">If you park the stroller for a moment — to climb stairs at the Upper Mammoth Terraces or a Canyon overlook — take all food, wrappers, juice boxes, and scented items with you. Bears have an extremely powerful sense of smell and have been known to investigate or damage an unattended stroller over a leftover crumb or a forgotten snack wrapper.</div>
+      </div>
+      <div class="rule">
+        <div class="rule-title">Use a carrier where the Day-by-Day tab says "No" or "Partial"</div>
+        <div class="rule-body">Hidden Falls, the Grand Prismatic Overlook trail, and the upper sections of String Lake and Mammoth are better suited to a toddler hiking carrier than a stroller.</div>
+      </div>
+    </div>
+
+  </section>
+`;
+
 /* ============ BUILD TOP-LEVEL TABS ============ */
 const topSections = [
   {label:"Flights &amp; Lodging", html: logisticsHtml},
   {label:"Day-by-Day Plan", html: dayByDayHtml},
-  {label:"Wildlife Safety", html: wildlifeHtml}
+  {label:"Wildlife Safety", html: wildlifeHtml},
+  {label:"Stroller Safety", html: strollerHtml}
 ];
 
 const toptabbar = document.getElementById('toptabbar');
@@ -615,6 +725,13 @@ function selectTop(i){
 }
 
 /* ============ BUILD NESTED DAY TABS (Day-by-Day panel) ============ */
+function strollerBadgeHtml(s){
+  if(!s) return '';
+  const labelMap = {yes:"Stroller-friendly", partial:"Partially stroller-friendly", no:"Not stroller-friendly", na:"Stroller not needed"};
+  const cls = s.level === 'na' ? 'yes' : s.level;
+  return `<div><span class="stroller-badge ${cls}">${labelMap[s.level]}</span></div><div class="stroller-note">${s.note}</div>`;
+}
+
 function renderDays(){
   const tabbar = document.getElementById('tabbar');
   const panels = document.getElementById('panels');
@@ -637,6 +754,7 @@ function renderDays(){
         <div class="stop-name"><a href="${s.url}" target="_blank" rel="noopener">${s.name}</a></div>
         <div class="addr">${s.addr}</div>
         <div class="stop-blurb">${s.blurb}</div>
+        ${strollerBadgeHtml(s.stroller)}
       </li>`).join('');
 
     let mealsSection = '';
